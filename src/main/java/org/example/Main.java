@@ -10,7 +10,7 @@ public class Main
         ExternalApiService service = new RealExternalApiService();
 
         ExternalApiService rate_limiting = new RateLimitingDecorator(
-                service, 30, 20, 60_000, Choice.Exception
+                service, 20, 20, 60_000, Choice.EXCEPTION
         );
         ExecutorService executor = Executors.newFixedThreadPool(10);
         for(int i = 0; i < 100; i++)
